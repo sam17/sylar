@@ -13,8 +13,10 @@
 	
 	<center>Which of these is {{attribute}}?</center>	
 
-	<img src="{{ MEDIA_URL}}{{file_location1}}" alt = "Picture 1">
-	<img src="{{ MEDIA_URL}}{{file_location2}}" alt = "Picture 2">
+	<form action = "/compare/" method = "get">
+		<input type = "image" src = "{{ MEDIA_URL}}{{file_location1}}" alt = "Picture 1">
+		<input type = "image" src = "{{ MEDIA_URL}}{{file_location2}}" alt = "Picture 2">
+	</form>
 	</p>
 
 
