@@ -10,8 +10,8 @@ urlpatterns = patterns('',
 	url(r'^$', home),
 	url(r'^compare/$',compare),
 	#url(r'^thanyou$',thanks),
-	#url(r'^results$',results),
-    url(r'^hello/$', hello),
+	url(r'^results$',results),
+    #url(r'^hello/$', hello),
     
     # Examples:
     # url(r'^$', 'sylar.views.home', name='home'),

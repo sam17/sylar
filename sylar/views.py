@@ -1,11 +1,12 @@
-from django.template.loader import get_template
 from django.template import Context
 from django.shortcuts import  render
+from django.template import RequestContext
 from django.http import HttpResponse
-import os
-import random
 from django import template
 from django.conf import settings
+from shoeRanks.models import imageOrders
+import os
+import random
 import datetime
 
 def random_image():
@@ -29,9 +30,26 @@ def home(request):
 	return render(request,'home.html',{'current_time': now})
 
 def compare(request):
-	location1 = random_image()
-	location2 = random_image()
-	return render(request,'compare.html',{'attribute': 'Sexy', 'file_location1' : location1,'file_location2' : location2})
+    #if request.method == 'POST':
+    location1 = random_image()
+    location2 = random_image()
+    attributes = ['Shiny','Open','Dark in Color','High Heeled']
+    index = random.randint(0,len(attributes)-1)
+    queryString = ''
+    if request.GET:
+        queryString = request.get_full_path()
+        queryString = queryString.split("&",2)[2]
+        queryString = queryString.split("=",1)[1]
+    if queryString == 'ImageOne':
+        data = imageOrders.objects.create(attribute = index,first_image = location1,second_image = location2)
+        print queryString
+    elif queryString == 'ImageTwo':
+        data = imageOrders.objects.create(attribute = index,first_image = location2,second_image = location1)
+        print queryString
+    else:
+        print "ERROR"
+    return render(request,'compare.html',{'attribute': attributes[index], 'file_location1' : location1,'file_location2' : location2})
 
-def hello(request):
+def results(request):
+    
     return HttpResponse("Hello world")

@@ -7,15 +7,20 @@
 </head>
 
 <body>
-	<h1>Relative Attribute Ranking Survey</h1>
+	<h1><center>Relative Attribute Ranking Survey</center></h1>
 
 	<p>
 	
-	<center>Which of these is {{attribute}}?</center>	
+	<center>Which of these is more {{attribute}} ?</center>	
+	<br> <br>
 
-	<form action = "/compare/" method = "get">
-		<input type = "image" src = "{{ MEDIA_URL}}{{file_location1}}" alt = "Picture 1">
-		<input type = "image" src = "{{ MEDIA_URL}}{{file_location2}}" alt = "Picture 2">
+	<!--<img src = "{{ MEDIA_URL}}{{file_location1}}" alt = "Picture 1" height = 480 width = 640 >
+	<img src = "{{ MEDIA_URL}}{{file_location2}}" alt = "Picture 2" height = 480 width = 640 >
+	<br>
+	Image One Image Two -->
+	<form action = "" method = "get">
+		<input type="image" src ="{{ MEDIA_URL}}{{file_location1}}" alt = "Picture 1"  name="image_one" value="ImageOne" />
+		<input src = "{{ MEDIA_URL}}{{file_location2}}" alt = "Picture 2" type="image" name="image_two" value="ImageTwo" />
 	</form>
 	</p>
 
