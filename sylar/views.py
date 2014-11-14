@@ -5,9 +5,7 @@ from django.http import HttpResponse
 from django import template
 from django.conf import settings
 from shoeRanks.models import imageOrders
-import os
-import random
-import datetime
+import os, random, datetime, string
 
 def random_image():
     try:
@@ -51,5 +49,6 @@ def compare(request):
     return render(request,'compare.html',{'attribute': attributes[index], 'file_location1' : location1,'file_location2' : location2})
 
 def results(request):
-    
-    return HttpResponse("Hello world")
+    data = imageOrders.objects.all()
+
+    return HttpResponse(data)

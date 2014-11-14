@@ -1,16 +1,16 @@
 from django.conf.urls import patterns, include, url
-from sylar.views import hello,home,compare
 from django.conf import settings
+from sylar import views
 from django.conf.urls.static import static
 
 from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-	url(r'^$', home),
-	url(r'^compare/$',compare),
+	url(r'^$', views.home),
+	url(r'^compare/$',views.compare),
 	#url(r'^thanyou$',thanks),
-	url(r'^results$',results),
+	url(r'^results$',views.results),
     #url(r'^hello/$', hello),
     
     # Examples:
